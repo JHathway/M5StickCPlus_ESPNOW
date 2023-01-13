@@ -1,41 +1,31 @@
+//==============================================
+// File:    M5StickCPlus_RcvESPNOW
+//
+// Author:  J. Hathway
+//
+// Description:
+//     - Receive incoming ESP NOW messages
+//     - Print to LCD every 10 seconds
+//===============================================
 
 #include <M5StickCPlus.h>
-#include <esp_now.h>
-#include <WiFi.h>
+#include "ESPNOW_Receive.h"
 
-float incomingMessage;
-
-
-// Callback when data is received
-void OnDataRecv(const uint8_t *mac, const uint8_t *incomingData, int len)
-{
-
-  memcpy(&incomingMessage, incomingData, sizeof(incomingMessage));
-
-  M5.Lcd.fillScreen(BLACK);
-  M5.Lcd.setCursor(0, 0);
-  M5.Lcd.print("Bytes received: ");
-  M5.Lcd.println(len);
-
-  M5.Lcd.println(incomingMessage);
-}
+// variable to store received messages
+float message = 0;
 
 void setup()
 {
-  // Init Serial Monitor
+  // initialise M5Stick
   M5.begin();
 
-  // Set device as a Wi-Fi Station
-  WiFi.mode(WIFI_STA);
-
-  // Init ESP-NOW
-  if (esp_now_init() != ESP_OK)
-  {
-    M5.Lcd.println("Error initializing ESP-NOW");
-    return;
-  }
-
+  // copies received messages to input paramter
+  espReceive<float>(message);
 }
 
 void loop()
-{}
+{
+  // print every 10 seconds
+  M5.Lcd.print(message);
+  delay(10000);
+}
