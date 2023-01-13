@@ -19,6 +19,8 @@ void setup()
   // initialise M5Stick
   M5.begin();
 
+  espInit();
+  
   // copies received messages to input paramter
   espReceive<float>(message);
 }
