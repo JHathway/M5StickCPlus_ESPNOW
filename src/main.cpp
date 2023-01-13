@@ -20,7 +20,7 @@ void setup()
   M5.begin();
 
   // copies received messages to input paramter
-  espReceive(message);
+  espReceive<float>(message);
 }
 
 void loop()

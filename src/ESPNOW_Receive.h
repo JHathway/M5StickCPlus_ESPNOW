@@ -1,9 +1,10 @@
 #include <esp_now.h>
 #include <WiFi.h>
 
-float *ptr = nullptr;
+void *ptr = nullptr;
 
-void espReceive(float &_message)
+template<typename T>
+void espReceive(T &_message)
 {
     ptr = &_message;
     
@@ -18,6 +19,6 @@ void espReceive(float &_message)
     esp_now_register_recv_cb(
         [](const uint8_t *_mac, const uint8_t *_incomingData, int _len)
         {
-            memcpy(ptr, _incomingData, sizeof(*ptr));
+            memcpy(ptr, _incomingData, sizeof(*(T*)ptr));
         });
 }
