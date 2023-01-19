@@ -15,7 +15,6 @@ float outgoingMessage = 5.0;
 
 void setup()
 {
-  // Init Serial Monitor
   M5.begin();
 
   uint8_t broadcastAddress[] = {0x4C, 0x75, 0x25, 0x9F, 0x64, 0xF0};
