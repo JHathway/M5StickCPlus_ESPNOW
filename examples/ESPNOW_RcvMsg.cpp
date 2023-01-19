@@ -9,7 +9,7 @@
 //===============================================
 
 #include <M5StickCPlus.h>
-#include "ESPNOW_Receive.h"
+#include "M5Stick_ESPNOW.h"
 
 // variable to store received messages
 float message = 0;
