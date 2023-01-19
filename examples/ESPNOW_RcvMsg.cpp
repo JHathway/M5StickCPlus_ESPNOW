@@ -19,6 +19,7 @@ void setup()
   // initialise M5Stick
   M5.begin();
 
+  // initialise ESPNOW
   espInit();
 
   // copies received messages to input paramter

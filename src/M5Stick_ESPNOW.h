@@ -1,8 +1,6 @@
 #include <esp_now.h>
 #include <WiFi.h>
 
-void *_ptr = nullptr;
-
 void espInit()
 {
     WiFi.mode(WIFI_STA);
@@ -13,6 +11,8 @@ void espInit()
         return;
     }
 }
+
+void *_ptr = nullptr;
 
 template <typename T>
 void espReceive(T &_message)

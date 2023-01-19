@@ -15,6 +15,4 @@ void setup()
   PRINT_LN(WiFi.macAddress());
 }
 
-void loop()
-{
-}
+void loop() {}
