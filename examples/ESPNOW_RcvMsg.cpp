@@ -12,18 +12,20 @@
 #include "M5Stick_ESPNOW.h"
 
 // variable to store received messages
-float message = 0;
+// ***MUST be same data type as data being sent
+String message = "";
 
 void setup()
 {
   // initialise M5Stick
   M5.begin();
 
-  // initialise ESPNOW
-  espInit();
+  // initialise ESPNOW receive
+  espInitRcv();
 
   // copies received messages to input paramter
-  espReceive<float>(message);
+  // ***MUST specify data type
+  espReceive<String>(message);
 }
 
 void loop()
