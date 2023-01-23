@@ -13,6 +13,7 @@
 
 //==============================================
 // PAIR DEVICES
+
 esp_now_peer_info_t _peerInfo;
 
 void sendTo(uint8_t *_address)
@@ -28,6 +29,7 @@ void sendTo(uint8_t *_address)
 
 //==============================================
 // INITIALISE ESPNOW SEND
+
 void espInitSend()
 {
     // set device as a Wi-Fi Station
@@ -55,6 +57,7 @@ void espInitSend()
 
 //==============================================
 // INITIALISE ESPNOW RECEIVE
+
 void espInitRcv()
 {
     // Set device as a Wi-Fi Station
@@ -70,6 +73,7 @@ void espInitRcv()
 
 //==============================================
 // ESP NOW SEND
+
 template <typename T>
 void espSend(T _message)
 {
@@ -82,6 +86,7 @@ void espSend(T _message)
 
 //==============================================
 // ESPNOW RECEIVE
+
 void *_ptr = nullptr;
 
 template <typename T>
