@@ -1,3 +1,13 @@
+//==============================================
+// File:    M5Stick_ESPNOW.h
+//
+// Author:  J. Hathway
+//
+// Description:
+//     - Functions for sending/receiving ESPNOW
+//       messages on M5StickCPlus
+//===============================================
+
 #include <esp_now.h>
 #include <WiFi.h>
 
