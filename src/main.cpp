@@ -1,45 +1,36 @@
 //==============================================
-// File:    M5StickCPlus_SendESPNOW
+// File:    M5StickCPlus_RcvESPNOW
 //
 // Author:  J. Hathway
 //
 // Description:
-//     - Send incoming ESP NOW messages
-//     - Repeat every 10 seconds
+//     - Receive incoming ESP NOW messages
+//     - Print to LCD every 10 seconds
 //===============================================
 
 #include <M5StickCPlus.h>
 #include "M5Stick_ESPNOW.h"
 
-// Message to send
-// ***MUST be same data type as receiver
-String outgoingMessage = "AhoyHoy";
+// variable to store received messages
+// ***MUST be same data type as data being sent
+String message = "";
 
 void setup()
 {
   // initialise M5Stick
   M5.begin();
 
-  // initialise ESPNOW send
-  espInitSend();
+  // initialise ESPNOW receive
+  espInitRcv();
 
-  // MAC addresses to send to
-  uint8_t macAddress[] = {0x4C, 0x75, 0x25, 0x9F, 0x64, 0xF0};
-  uint8_t macAddress2[] = {0x4C, 0x75, 0x25, 0x9F, 0x09, 0x28};
-  
-  // pair with MAC addresses
-  sendTo(macAddress);
-  sendTo(macAddress2);
+  // copies received messages to input paramter
+  // ***MUST specify data type
+  espReceive<String>(message);
 }
 
 void loop()
 {
-  // send message every 10 seconds
-  // ***MUST specify data type 
-  M5.Lcd.println("Sending message:\n" + String(outgoingMessage));
-  espSend<String>(outgoingMessage);
+  // print every 10 seconds
+  M5.Lcd.print(message);
   delay(10000);
-
-  M5.Lcd.setCursor(0, 0);
-  M5.Lcd.fillScreen(BLACK);
 }

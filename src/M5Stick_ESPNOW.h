@@ -11,10 +11,10 @@
 #include <esp_now.h>
 #include <WiFi.h>
 
-esp_now_peer_info_t _peerInfo;
-
 //==============================================
 // PAIR DEVICES
+esp_now_peer_info_t _peerInfo;
+
 void sendTo(uint8_t *_address)
 {
     // register peer
