@@ -14,17 +14,17 @@
 //==============================================
 // PAIR DEVICES
 esp_now_peer_info_t _peerInfo;
-int peerCount = 0;
+int _peerCount = 0;
 
 void sendTo(uint8_t *_address)
 {
-    peerCount++;
+    _peerCount++;
 
     // register peer
     memcpy(_peerInfo.peer_addr, _address, 6);
     if (esp_now_add_peer(&_peerInfo) != ESP_OK)
     {
-        M5.Lcd.println("Failed to add peer " + String(peerCount));
+        M5.Lcd.println("Failed to add peer " + String(_peerCount));
         return;
     }
 }
@@ -45,9 +45,9 @@ void espInitSend()
 
     // function called when message is sent
     esp_now_register_send_cb(
-        [](const uint8_t *mac_addr, esp_now_send_status_t status)
+        [](const uint8_t *_mac_addr, esp_now_send_status_t _status)
         {
-            if (status != ESP_NOW_SEND_SUCCESS)
+            if (_status != ESP_NOW_SEND_SUCCESS)
                 M5.Lcd.println("Failed to deliver");
         });
 

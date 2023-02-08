@@ -35,7 +35,7 @@ void setup()
 void loop()
 {
   // send message every 10 seconds
-  // ***MUST specify data type 
+  // ***MUST specify data type
   M5.Lcd.println("Sending message:\n" + String(outgoingMessage));
   espSend<String>(outgoingMessage);
   delay(10000);
